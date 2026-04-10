@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <header className="hero">
-      <h1>End the Chaos of Fragmented Workflows.</h1>
+    <header className="hero" >
+      <h1>OneWork: One platform. Infinite talent. Seamless execution.</h1>
       <p>
         OneWork is the ultimate Modular Commons. A unified digital ecosystem designed 
         to solve the coordination problem between enterprise clients, independent freelancers, 

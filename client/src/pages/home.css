@@ -3,7 +3,7 @@ html, body, #root {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background-color: #ffffff;
+  background-color: rgb(255, 255, 255);
   color: #334155;
   font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
   line-height: 1.6;
@@ -61,13 +61,34 @@ html, body, #root {
 }
 
 /* --- HERO SECTION --- */
+/* --- UPDATED HERO CONTAINER --- */
 .hero {
+  position: relative; /* REQUIRED: Traps the background image inside this section */
+  z-index: 1;         /* REQUIRED: Creates a layer so your text stays on top */
+  
   padding: 100px 50px;
-  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+  background-color: #f8fafc; /* Replaced your gradient with a solid fallback color */
   text-align: center;
   border-bottom: 1px solid #f1f5f9;
+  overflow: hidden;   /* Prevents the background image from spilling out */
 }
 
+/* --- NEW: THE 60% VISIBLE BACKGROUND IMAGE --- */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  
+  /* Make sure your image is in the public folder! */
+  background-image: url('/hero-bg.jpg'); 
+  background-size: cover;
+  background-position: center;
+  
+  opacity: 0.25; /* The 60% visibility magic */
+  z-index: -1;  /* Pushes the image behind your text and buttons */
+}
+
+/* --- YOUR EXISTING TEXT CODE (UNCHANGED) --- */
 .hero h1 {
   font-size: 56px;
   color: #0f172a;
@@ -86,6 +107,7 @@ html, body, #root {
   max-width: 750px;
   margin-left: auto;
   margin-right: auto;
+  font-weight: 500; /* Optional: Sometimes text needs to be slightly bolder over images */
 }
 
 .hero-buttons {
@@ -120,78 +142,35 @@ html, body, #root {
 
 .btn-outline:hover { border-color: #cbd5e1; background: #f8fafc; }
 
-/* --- FEATURES SECTION --- */
-.features-container {
-  padding: 80px 50px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.feature-row {
-  display: flex;
-  align-items: center;
-  gap: 60px;
-  margin-bottom: 100px;
-}
-
-.feature-row.reverse { flex-direction: row-reverse; }
-
-.feature-text { flex: 1; }
-
-.feature-text h2 {
-  font-size: 36px;
-  color: #0f172a;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.feature-text p {
-  font-size: 18px;
-  color: #64748b;
-  margin-bottom: 20px;
-}
-
-.feature-list {
-  list-style: none;
-  padding: 0;
-}
-
-.feature-list li {
-  font-size: 16px;
-  color: #334155;
-  margin-bottom: 12px;
-  padding-left: 24px;
-  position: relative;
-}
-
-.feature-list li::before {
-  content: '✓';
-  color: #2563eb;
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-}
-
+/* --- UPDATED FEATURE VISUAL --- */
 .feature-visual {
   flex: 1;
-  background: #f8fafc;
-  height: 350px;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
-  font-size: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
+
+.feature-visual img {
+  width: 100%;
+  height: auto; /* Allows the image to keep its natural aspect ratio */
+  max-width: 550px; /* Prevents it from getting too huge */
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Smoother, deeper shadow */
+  transition: transform 0.3s ease;
+}
+
+/* Optional: Add a little "pop" when the user hovers over the image */
+.feature-visual img:hover {
+  transform: scale(1.02);
+} 
 
 /* --- FOOTER --- */
 .footer {
   text-align: center;
   padding: 40px 20px;
-  background-color: #f8fafc;
-  color: #64748b;
+  /* background-color: #f8fafc; */
+  /* color: #64748b; */
   border-top: 1px solid #e2e8f0;
   margin-top: auto;
 }

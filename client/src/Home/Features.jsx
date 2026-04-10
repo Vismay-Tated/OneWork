@@ -2,6 +2,7 @@ export default function Features() {
   return (
     <section className="features-container">
       
+      {/* ROW 1: CLIENTS */}
       <div className="feature-row">
         <div className="feature-text">
           <h2>For Clients: Total Project Orchestration</h2>
@@ -13,10 +14,12 @@ export default function Features() {
           </ul>
         </div>
         <div className="feature-visual">
-          [ Dashboard UI Preview ]
+          {/* Linked to public/client-dash.jpg */}
+          <img src="/client-dash.jpg" alt="Dashboard UI Preview" />
         </div>
       </div>
 
+      {/* ROW 2: FREELANCERS */}
       <div className="feature-row reverse">
         <div className="feature-text">
           <h2>For Freelancers: Predictable Career Growth</h2>
@@ -28,10 +31,12 @@ export default function Features() {
           </ul>
         </div>
         <div className="feature-visual">
-          [ Real-Time Job Board Preview ]
+          {/* Linked to public/freelancer-dash.jpg */}
+          <img src="/freelancer-dash.jpg" alt="Real-Time Job Board Preview" />
         </div>
       </div>
 
+      {/* ROW 3: AGENCIES */}
       <div className="feature-row">
         <div className="feature-text">
           <h2>For Agencies: Dynamic Workforce Scaling</h2>
@@ -43,7 +48,8 @@ export default function Features() {
           </ul>
         </div>
         <div className="feature-visual">
-          [ Agency Roster Management ]
+          {/* Linked to public/agency-dash.jpg */}
+          <img src="/agency-dash.jpg" alt="Agency Roster Management" />
         </div>
       </div>
 
