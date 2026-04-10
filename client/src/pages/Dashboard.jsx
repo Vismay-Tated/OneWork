@@ -1,17 +1,21 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Home.css';
+
+// Import our modular dashboards
+import ClientDashboard from '../clientdashboard/ClientDashboard.jsx';
+// import FreelancerDashboard from '../components/FreelancerDashboard';
+// import AgencyDashboard from '../components/AgencyDashboard';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  // When the dashboard loads, check who is logged in
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user');
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser));
     } else {
-      // If no one is logged in, kick them back to login
       navigate('/login');
     }
   }, [navigate]);
@@ -22,43 +26,35 @@ export default function Dashboard() {
     navigate('/login');
   };
 
-  if (!user) return <div>Loading...</div>;
+  if (!user) return <div style={{ textAlign: 'center', padding: '50px', fontFamily: 'Inter' }}>Loading workspace...</div>;
 
   return (
-    <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2>OneWork Workspace</h2>
-        <button onClick={handleLogout} style={{ padding: '5px 15px', cursor: 'pointer' }}>Logout</button>
-      </header>
+    <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
       
-      <hr />
-
-      {/* --- DYNAMIC UI MAGIC STARTS HERE --- */}
-      <h3>Welcome, {user.name}! ({user.role})</h3>
-
-      {user.role === 'Client' && (
-        <div style={{ background: '#f0f8ff', padding: '15px', borderRadius: '8px' }}>
-          <h4>Client Control Center</h4>
-          <p>Here you can post new gigs and review agency proposals.</p>
-          <button style={{ padding: '10px', background: 'blue', color: 'white', border: 'none' }}>+ Post a New Gig</button>
+      {/* Dashboard Navbar */}
+      <nav className="navbar" style={{ backgroundColor: 'white', borderBottom: '1px solid #e2e8f0', position: 'sticky', top: 0, zIndex: 100 }}>
+        <div style={{ fontSize: '24px', fontWeight: '800', color: '#2563eb', letterSpacing: '-0.5px' }}>OneWork Workspace</div>
+        <div className="nav-links" style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+          <span style={{ fontWeight: '600', color: '#64748b' }}>
+            Logged in as: <span style={{ color: '#0f172a' }}>{user.name}</span> <span style={{ fontSize: '12px', background: '#e2e8f0', padding: '4px 8px', borderRadius: '12px', marginLeft: '5px' }}>{user.role}</span>
+          </span>
+          <button onClick={handleLogout} className="btn-outline" style={{ cursor: 'pointer', padding: '8px 16px', fontSize: '14px' }}>
+            Sign Out
+          </button>
         </div>
-      )}
+      </nav>
 
-      {user.role === 'Freelancer' && (
-        <div style={{ background: '#e6ffe6', padding: '15px', borderRadius: '8px' }}>
-          <h4>Freelancer Job Board</h4>
-          <p>Here are the latest open gigs from clients and agencies.</p>
-          <button style={{ padding: '10px', background: 'green', color: 'white', border: 'none' }}>View Open Gigs</button>
-        </div>
-      )}
+      {/* Main Content Area */}
+      <div style={{ maxWidth: '1100px', margin: '40px auto', padding: '0 20px' }}>
+        <div style={{ background: 'white', padding: '40px', borderRadius: '12px', border: '1px solid #e2e8f0', boxShadow: '0 4px 20px rgba(0,0,0,0.02)' }}>
+          
+          {/* THE MAGIC SWITCH */}
+          {user.role === 'Client' && <ClientDashboard user={user} />}
+          {user.role === 'Freelancer' && <FreelancerDashboard user={user} />}
+          {user.role === 'Agency' && <AgencyDashboard user={user} />}
 
-      {user.role === 'Agency' && (
-        <div style={{ background: '#fff0f5', padding: '15px', borderRadius: '8px' }}>
-          <h4>Agency Roster</h4>
-          <p>Manage your affiliated freelancers and bid on large client projects.</p>
-          <button style={{ padding: '10px', background: 'purple', color: 'white', border: 'none' }}>View Talent Pool</button>
         </div>
-      )}
+      </div>
     </div>
   );
 }

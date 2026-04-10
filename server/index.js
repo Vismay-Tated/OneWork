@@ -48,6 +48,7 @@ io.on('connection', (socket) => {
 
 // Start the Server
 const PORT = process.env.PORT || 5000;
+app.use('/api/auth', require('./routes/auth'));
 server.listen(PORT, () => {
   console.log(`🚀 OneWork Server running on port ${PORT}`);
 });

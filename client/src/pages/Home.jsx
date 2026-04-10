@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom';
+import Navbar from '../Home/Navbar';
+import Hero from '../Home/Hero';
+import Features from '../Home/Features';
+import Footer from '../Home/Footer';
+import './home.css';
 
 export default function Home() {
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Welcome to OneWork</h1>
-      <p>The unified ecosystem for Clients, Freelancers, and Agencies.</p>
-      <div style={{ marginTop: '20px' }}>
-        <Link to="/login" style={{ marginRight: '15px' }}>Login</Link>
-        <Link to="/register">Register</Link>
-      </div>
+    <div className="home-container">
+      <Navbar />
+      <Hero />
+      <Features />
+      <Footer />
     </div>
   );
 }
