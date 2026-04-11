@@ -31,7 +31,7 @@ html, body, #root {
 .logo {
   font-size: 26px;
   font-weight: 800;
-  color: #2563eb;
+  color: #982aa4;
   text-decoration: none;
   letter-spacing: -0.5px;
 }
@@ -48,7 +48,7 @@ html, body, #root {
 .nav-links a:hover { color: #0f172a; }
 
 .btn-primary {
-  background-color: #2563eb;
+  background-color: #8047a7;
   color: white !important;
   padding: 10px 24px;
   border-radius: 6px;
@@ -143,6 +143,66 @@ html, body, #root {
 .btn-outline:hover { border-color: #cbd5e1; background: #f8fafc; }
 
 /* --- UPDATED FEATURE VISUAL --- */
+/* --- FEATURES SECTION --- */
+.features-container { padding: 80px 50px; max-width: 1200px; margin: 0 auto;
+}
+
+.feature-row { display: flex; align-items: center; gap: 60px; margin-bottom: 100px;
+}
+
+.feature-row.reverse { flex-direction: row-reverse; }
+
+.feature-text { flex: 1; }
+
+.feature-text h2 {
+ font-size: 36px;
+ color: #0f172a;
+ margin-bottom: 20px;
+ line-height: 1.2;
+}
+
+.feature-text p {
+ font-size: 18px;
+ color: #64748b;
+ margin-bottom: 20px;
+}
+
+.feature-list {
+ list-style: none;
+ padding: 0;
+}
+
+.feature-list li {
+ font-size: 16px;
+ color: #334155;
+ margin-bottom: 12px;
+ padding-left: 24px;
+ position: relative;
+}
+
+.feature-list li::before {
+ content: '✓';
+ color: #2563eb;
+ position: absolute;
+ left: 0;
+ font-weight: bold;
+}
+
+.feature-visual {
+ flex: 1;
+ background: #f8fafc;
+ height: 350px;
+ border-radius: 12px;
+ border: 1px solid #e2e8f0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #94a3b8;
+ font-size: 18px;
+ box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+ background-image: url('/Freelencer.jpg'); 
+}
+
 .feature-visual {
   flex: 1;
   display: flex;

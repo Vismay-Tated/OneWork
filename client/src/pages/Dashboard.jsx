@@ -4,8 +4,8 @@ import './Home.css';
 
 // Import our modular dashboards
 import ClientDashboard from '../clientdashboard/ClientDashboard.jsx';
-// import FreelancerDashboard from '../components/FreelancerDashboard';
-// import AgencyDashboard from '../components/AgencyDashboard';
+import FreelancerDashboard from '../Clientdashboard/FreelancerDashboard';
+import AgencyDashboard from '../Clientdashboard/AgencyDashboard.jsx';
 
 export default function Dashboard() {
   const [user, setUser] = useState(null);
@@ -58,3 +58,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
